@@ -1,6 +1,8 @@
 <?php
 namespace Challenger;
 
+use Challenger\Conditional\InvalidConditionalException;
+
 class ConditionalCollection implements \Countable, \Iterator, \ArrayAccess {
     private $values = [];
     private $position = 0;
@@ -54,5 +56,11 @@ class ConditionalCollection implements \Countable, \Iterator, \ArrayAccess {
 
     public function offsetUnset($offset) {
         unset($this->values[$offset]);
+    }
+
+    public function validateConditionals() {
+        if ( empty($this->values) ) {
+            throw new InvalidConditionalException('You need to define at least one conditional');
+        }
     }
 }

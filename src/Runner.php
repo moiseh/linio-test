@@ -14,7 +14,7 @@ class Runner {
     /**
      * Conditional rules array
      * 
-     * @var array
+     * @var ConditionalCollection
      */
     private $conditionals;
 
@@ -58,14 +58,14 @@ class Runner {
     }
 
     /**
-     * @param array $conditionals
+     * @param ConditionalCollection $conditionals
      */
-    public function setConditionals($conditionals) {
+    public function setConditionals(ConditionalCollection $conditionals) {
         $this->conditionals = $conditionals;
     }
 
     /**
-     * @return array
+     * @return ConditionalCollection
      */
     public function getConditionals() {
         return $this->conditionals;
@@ -102,9 +102,17 @@ class Runner {
      * Print in a nicer way to display on shell
      */
     public function printForShell() {
-        foreach ( $this->getMessages() as $line ) {
-            echo $line . PHP_EOL;
-        }
+        echo $this->getFormattedMessages();
+        echo PHP_EOL;
+    }
+
+    /**
+     * Get messages formatted with line break
+     * 
+     * @return string
+     */
+    public function getFormattedMessages() {
+        return implode("\n", $this->getMessages());
     }
 
     /**
@@ -120,8 +128,9 @@ class Runner {
             $end = $range->getEnd();
             $conditionals = $this->getConditionals();
 
-            // execute range validation only when execute (to avoid unnecessary processing)
+            // execute validations only when execute (to avoid unnecessary processing)
             $range->validateRanges();
+            $conditionals->validateConditionals();
 
             // run the loop
             while ( $counter <= $end ) {

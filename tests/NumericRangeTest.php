@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 use Challenger\NumericRange;
 use Challenger\NumericRangeException;
 
-final class ValidationTest extends TestCase
+final class NumericRangeTest extends TestCase
 {
     public function testRangeValidation(): void
     {
