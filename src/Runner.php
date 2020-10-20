@@ -127,16 +127,18 @@ class Runner {
             $counter = $range->getStart();
             $end = $range->getEnd();
             $conditionals = $this->getConditionals();
+            $number = 1;
 
             // execute validations only when execute (to avoid unnecessary processing)
             $range->validateRanges();
             $conditionals->validateConditionals();
 
             // run the loop
-            while ( $counter <= $end ) {
+            while ( $number <= $end ) {
                 foreach ( $conditionals as $rule ) {
                     if ( $rule->check($counter) ) {
-                        $this->appendMessage( $rule->getLabel() );
+                        $this->appendMessage( sprintf('%s: %s', $number, $rule->getLabel()) );
+                        $number ++;
                     }
                 }
 
