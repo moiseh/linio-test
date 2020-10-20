@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "psr-4": {"Challenger\\": "src/"}
+    },
+    "require": {
+        "php": ">=7.2.1"
+    },
+    "require-dev": {
+    }
+}
