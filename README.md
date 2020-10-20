@@ -17,7 +17,7 @@ php challenger.php
 ### 3. Execute the PHPUnit test cases
 
 ```bash
-phpunit --bootstrap vendor/autoload.php tests
+./vendor/bin/phpunit --bootstrap vendor/autoload.php tests
 ```
 
 ## Challenge - Backend Developer
