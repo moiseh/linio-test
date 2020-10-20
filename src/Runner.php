@@ -36,7 +36,7 @@ class Runner {
      * Constructor method
      * 
      * @param NumericRange $range
-     * @param RuleInterface $conditionals
+     * @param ConditionalCollection $conditionals
      */
     public function __construct(NumericRange $range, ConditionalCollection $conditionals) {
         $this->setRange($range);
